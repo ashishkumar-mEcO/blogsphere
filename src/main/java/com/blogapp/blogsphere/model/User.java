@@ -36,6 +36,7 @@ public class User {
         @Column(name = "created_at")
         private LocalDateTime createdAt = LocalDateTime.now();
 
+        @JsonIgnore
         @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
         private List<Post> posts;
 

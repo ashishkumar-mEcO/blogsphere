@@ -1,6 +1,7 @@
 package com.blogapp.blogsphere.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,6 +33,7 @@ public class Post {
     @JoinColumn(name = "author_id", nullable = false)     //Foreign key in database
     private User author;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "post_tags",
@@ -40,6 +42,7 @@ public class Post {
     )
     private List<Tag> tags;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<Comment> comments;
 
